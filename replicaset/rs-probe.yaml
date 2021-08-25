@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: ReplicaSet 
+metadata:
+  name: test-probe
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      foo: bar
+  template:
+    metadata:
+      labels:
+        foo: bar
+    spec:
+      containers:
+      - image: debian:latest
+        imagePullPolicy: IfNotPresent
+        name: c1
+        command: ["/bin/sh"]
+        args:
+          - "-c"
+          - "while true; do sleep 10;done"
+        readinessProbe:
+          httpGet:
+            path: /healthz
+            port: 8080
