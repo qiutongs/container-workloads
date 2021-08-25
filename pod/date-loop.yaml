@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: log-generator
+spec:
+  containers:
+    - name: log-generator
+      image: busybox
+      args:
+        - /bin/sh
+        - -c
+        - 'while true; do date; sleep 2; done'
