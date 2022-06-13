@@ -1,0 +1,5 @@
+FROM busybox 
+RUN mkdir d1 && echo "abc" > d1/abc.txt
+RUN rm -rf d1
+RUN mkdir d1 && echo "efg" > d1/efg.txt
+RUN rm d1/efg.txt
