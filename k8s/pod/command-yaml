@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod 
+metadata:
+  name: sleep-pod
+spec:
+  containers:
+  - image: busybox
+    imagePullPolicy: IfNotPresent
+    name: busybox
+    command: ["/bin/sh"]
+    args: ["-c", "sleep 5; exit 0"]
